@@ -1,0 +1,187 @@
+*{
+    margin: 0;
+}
+
+//header
+
+.container{
+    height: 100vh;
+    overflow: scroll;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}
+
+.main{
+    margin-top: 5em;
+}
+
+.nav{
+    padding: 1em 3em;
+    justify-content: space-between;
+    display: flex;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    width: 100vw!important;
+    height: 4em;
+}
+
+.searchbar{
+    background-color: #ddd;
+    border-radius: 0.3em;
+    margin: 3em;
+    padding: 0.7em 1em;
+}
+
+//landing user page
+
+.barbershop{
+    display: flex;
+    background-color: #eee;
+    margin: 0.8em 0;
+    border-radius: 0.3em;
+
+    .img{
+        background-color: #ddd;
+        flex: 1 0 40%;
+    }
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 60%;
+    padding: 0.3em;
+
+    h3{
+        font-size: 1em;
+    }
+
+    .people{
+        display: flex;
+        padding: 0.5em;
+
+        p{
+            padding-left: 0.2em;
+        }
+    }
+
+    .distance{
+        // width: 80%;
+
+        p{
+            text-align: right;
+            padding: 0.4em;
+        }
+    }
+}
+
+//popup page
+
+.popup{
+    background-color: rgba(0,0,0,0.5);
+    position: relative;
+}
+
+.infoPopup{
+    background-color: white;
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+
+    h2{
+        text-align: center;
+        padding: 0.2em;
+    }
+
+    .address{
+        text-align: center;
+    }
+
+    .image{
+        width: 100%;
+        height: 10em;
+        background-color: #ccc;
+    }
+}
+
+.customers{
+    display: flex;
+    // border: 1px red solid;
+    justify-content: space-evenly;
+    margin: 1em;
+
+    div{
+        flex-direction: row;
+        // border: 1px blue solid;
+
+        .people{
+            display: flex;
+            justify-content: space-evenly;
+            padding: 0.3em;
+        }
+    }
+}
+
+hr{
+    width: 90%;
+    margin: auto;
+}
+
+.barbers{
+    border: 1px red solid;
+    width: 90%;
+    margin: auto!important;
+}
+
+.barber{
+    border: 1px blue solid;
+    background-color: #ddd;
+    padding: 0.5em;
+    margin: 0;
+
+    img{
+        background-color: grey;
+        width: 10em;
+        height: 10em;
+    }
+}
+
+.openingHours{
+    margin-bottom: 1em;
+}
+
+.date{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    text-align: left;
+
+    div{
+        margin: 0;
+    }
+
+    .days{
+        width: 60%;
+        color: maroon;
+        font-weight: bold;
+    }
+}
+
+//login
+
+.login{
+    position: fixed;
+    top: 4em;
+    background-color: white;
+    width: 100vw;
+    padding: 1em;
+    display: none;
+}
+
+//adding to waiting list
