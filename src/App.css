@@ -1,0 +1,211 @@
+* {
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  overflow: scroll;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.main {
+  margin-top: 6em;
+}
+
+.nav {
+  padding: 1em 3em;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: fixed;
+  top: 0;
+  background-color: black;
+  width: 100vw !important;
+  height: 3em;
+}
+
+.searchbar {
+  margin: 3em;
+}
+
+.searchbar input {
+  outline: none;
+  padding: 0.7em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0.5em auto;
+  width: 90%;
+  font-size: 0.9em;
+}
+
+.barbershop {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eee;
+  margin: 0.8em 0;
+  border-radius: 0.3em;
+}
+
+.barbershop .img {
+  background-color: #ddd;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 40%;
+          flex: 1 0 40%;
+}
+
+.info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60%;
+          flex: 0 0 60%;
+  padding: 0.3em;
+}
+
+.info h3 {
+  font-size: 1em;
+}
+
+.info .people {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.5em;
+}
+
+.info .people p {
+  padding-left: 0.2em;
+}
+
+.info .distance p {
+  text-align: right;
+  padding: 0.4em;
+}
+
+.popup {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.infoPopup {
+  background-color: white;
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+.infoPopup h2 {
+  text-align: center;
+  padding: 0.2em;
+}
+
+.infoPopup .address {
+  text-align: center;
+}
+
+.infoPopup .image {
+  width: 100%;
+  height: 10em;
+  background-color: #ccc;
+}
+
+.customers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 1em;
+}
+
+.customers div {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.customers div .people {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0.3em;
+}
+
+hr {
+  width: 90%;
+  margin: auto;
+}
+
+.barbers {
+  border: 1px red solid;
+  width: 90%;
+  margin: auto !important;
+}
+
+.barber {
+  border: 1px blue solid;
+  background-color: #ddd;
+  padding: 0.5em;
+  margin: 0;
+}
+
+.barber img {
+  background-color: grey;
+  width: 10em;
+  height: 10em;
+}
+
+.openingHours {
+  margin-bottom: 1em;
+}
+
+.date {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  margin: auto;
+  text-align: left;
+}
+
+.date div {
+  margin: 0;
+}
+
+.date .days {
+  width: 60%;
+  color: maroon;
+  font-weight: bold;
+}
+
+.login {
+  position: fixed;
+  top: 4em;
+  background-color: white;
+  width: 100vw;
+  padding: 1em;
+  display: none;
+}
+/*# sourceMappingURL=App.css.map */

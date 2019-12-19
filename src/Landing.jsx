@@ -1,51 +1,59 @@
 import React, {Component} from 'react';
+import Barbershop from './Barbershop';
 import './App.css';
+import {api, server} from './API';
+
 
 class Landing extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      barbershops: []
+    }
+  }
+
+  getShops = () => {
+    api.getShops()
+    .then(res => {
+      this.setState({barbershops: res.data})
+    })
+  }
+
+  componentDidMount(){
+    this.getShops()
   }
 
   render(){
+    var {barbershops} = this.state;
     return (
       <div className="App">
+        <div className="container">
 
-        <div class="container">
-
-          <div class="nav">
+          <div className="nav">
             <img src="" alt="logo"/>
-            <i class="far fa-user"></i>
+            <i className="far fa-user"></i>
           </div>
 
-          <div class="main">     
+          <div className="main">     
             <form>
-              <div class="form-group">
-                <input type="search" placeholder="search" class="form-control" id="searchInput" aria-describedby="emailHelp"/>
+              <div className="searchbar">
+                <input type="text" name="search" placeholder="search..."></input>
               </div>
             </form>
-          
-            <div class="barbershop">
-              <img src="" alt="barbershop"/>
-              <div class="info">
-                <h3>Malonley Baber</h3>
-                <div class="people">
-                  <i class="far fa-user"></i>
-                  <p>3</p>
-                </div>
-                <div class="people">
-                  <i class="far fa-user"></i>
-                  <p>5</p>
-                </div>
-                <div class="distance">
-                  <p>800 m</p>
-                </div>
-              </div>
-            </div>
+
+            {
+              barbershops.map((i) => {
+                var props = {
+                  ...i,
+                  key: i.id,
+                }
+                return <Barbershop {...props}/>
+              })
+            }
 
           </div>
 
         </div>
-
       </div>
     );
   }
