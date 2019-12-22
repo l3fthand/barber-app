@@ -2,14 +2,16 @@ import React, {Component} from 'react';
 import Barbershop from './Barbershop';
 import Navigation from './Navigation';
 import './App.css';
+import {withRouter} from "react-router-dom";
 import {api, server} from './API';
+import Button from 'react-bootstrap/Button';
 
 class Landing extends Component {
   constructor(props){
     super(props);
     this.state = {
-      // startingPoint: '',
-      barbershops: []
+      barbershops: [],
+      redirect: true,
     }
   }
  
@@ -27,6 +29,13 @@ class Landing extends Component {
 
   // }
 
+  navigatePage(){
+    let {history} = this.props;
+    history.push({
+      pathname: '/addbarber',
+    })
+  }
+
   getShops = () => {
     api.getShops()
     .then(res => {
@@ -37,9 +46,9 @@ class Landing extends Component {
   componentDidMount(){
     this.getShops()
   }
-  
+
   render(){
-    var {barbershops} = this.state;
+    var {barbershops,redirect} = this.state;
     return (
       <div className="App">
         <div className="container">
@@ -47,11 +56,12 @@ class Landing extends Component {
           <Navigation/>
 
           <div className="main">     
-            <form>
+            {/* <form>
               <div className="searchbar">
                 <input type="text" name="search" placeholder="search..."></input>
               </div>
-            </form>
+            </form> */}
+              <Button onClick={this.navigatePage.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
 
             {
               barbershops.map((i) => {

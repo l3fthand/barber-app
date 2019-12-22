@@ -9,6 +9,15 @@ var api = {
     return axios.get(url+'/shops')
   },
 
+  addShop : (data) => {
+    return axios.post(url+'/shops',data)
+  },
+
+
+  uploadPhoto : (data) => {
+    return axios.post(url+'/upload',data)
+  },
+
 }
 
 export {server,api}
