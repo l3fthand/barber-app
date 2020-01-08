@@ -7,7 +7,7 @@ class Landing extends Component {
   }
 
   render(){
-    var {name, location, cutting, waiting} = this.props;
+    var {name, location, cutting, waiting, distance} = this.props;
     return (
         <div className="barbershop">
           <img src="" alt="barbershop"/>
@@ -22,7 +22,7 @@ class Landing extends Component {
               <p>{waiting}</p>
             </div>
             <div className="distance">
-              <p>800 m</p>
+              <p>{distance}</p>
             </div>
           </div>
         </div>
