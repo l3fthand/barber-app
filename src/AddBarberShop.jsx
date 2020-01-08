@@ -3,37 +3,40 @@ import './App.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import {api, server} from './API';
+import {connect} from 'react-redux';
+import barberFactory from './redux/barberFactory';
+import {Redirect} from 'react-router-dom';
 
 class AddBarberShop extends Component {
-  // constructor(props){
-  //   super(props);
-  // }
+  constructor(props){
+    super(props);
+    this.state = {
+      redirect: false,
+    }
+  }
 
   submitForm = (e) => {
 		e.preventDefault();
+		let form = new FormData(this.form);
+    let data = {
+			name: form.get('name-input'),
+			location: form.get('address-input'),
+			username: form.get('username-input'),
+      password: form.get('password-input'),
+      pin: form.get('pin-input'),
+    }
 
-		var form = new FormData(this.form);
+    this.props.addBarber(data)
+    this.setState({
+      redirect: true,
+    })
+  }
 
-		api.uploadPhoto(form).then(res => {
-			var files = res.data
-
-			var data = {
-				name: form.get('name-input'),
-				location: form.get('address-input'),
-				username: form.get('username-input'),
-        password: form.get('password-input'),
-        pin: form.get('pin-input'),
-				photos: files,
-			}
-			api.addShop(data)
-			// .then(()=>{
-			// 	this.props.refreshCurrentUser()
-			// 	navigate('/products')
-			// })
-		})
-	}
-  
   render(){
+    const redirect = this.state.redirect;
+    if(redirect == true){
+      return <Redirect to='/admin'/>
+    }
     return (
       <div className="App">
         <div className="container">
@@ -66,12 +69,26 @@ class AddBarberShop extends Component {
               </Form.Group>
 
               <Button variant="danger" type="submit">Add Barber</Button>
-              </Form>
-            </div>
-          </div>     
+            </Form>
+          </div>
+        </div>     
       </div>
     );
   }
 }
 
-export default AddBarberShop;
+function mapStateToProps(state){
+	return {
+		barbershops: state.barbershops
+	}
+}
+
+function mapDispatchToProps(dispatch){
+	return {
+		addBarber : (barbershop) => {
+			dispatch(barberFactory.add(barbershop))
+		}
+	}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddBarberShop);

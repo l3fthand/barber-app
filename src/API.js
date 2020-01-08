@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-var url = 'http://localhost:4000/api';
-var server = 'http://localhost:4000/';
+const url = 'http://localhost:4000/api';
+const server = 'http://localhost:4000/';
 
-var api = {
+const api = {
 
   getShops : () => {
     return axios.get(url+'/shops')
@@ -13,11 +13,11 @@ var api = {
     return axios.post(url+'/shops',data)
   },
 
-
-  uploadPhoto : (data) => {
-    return axios.post(url+'/upload',data)
-  },
+  // uploadPhoto : (data) => {
+  //   return axios.post(url+'/upload',data)
+  // },
 
 }
 
-export {server,api}
+export default api
+export {server, api}

@@ -3,7 +3,7 @@ import Landing from './Landing';
 import Admin from './Admin';
 import AddBarberShop from './AddBarberShop';
 import './App.css';
-import {BrowserRouter,Route,Switch,Redirect} from "react-router-dom";
+import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {

@@ -2,32 +2,19 @@ import React, {Component} from 'react';
 import Barbershop from './Barbershop';
 import Navigation from './Navigation';
 import './App.css';
-import {withRouter} from "react-router-dom";
 import {api, server} from './API';
 import Button from 'react-bootstrap/Button';
+import {connect} from 'react-redux';
+import barberFactory from './redux/barberFactory';
 
-class Landing extends Component {
+class Admin extends Component {
   constructor(props){
     super(props);
     this.state = {
       barbershops: [],
-      redirect: true,
+      // redirect: false,
     }
   }
- 
-  // handleSearch = () =>{
-  //   var distance = require('google-distance-matrix');
-
-  //   var origins = ['San Francisco CA'];
-  //   var destinations = ['New York NY', '41.8337329,-87.7321554'];
-  
-  //   distance.matrix(origins, destinations, function (err, distances) {
-  //     if (!err)
-  //         console.log(distances);
-  // })
-
-
-  // }
 
   navigatePage(){
     let {history} = this.props;
@@ -36,15 +23,16 @@ class Landing extends Component {
     })
   }
 
-  getShops = () => {
-    api.getShops()
-    .then(res => {
-      this.setState({barbershops: res.data})
-    })
-  }
+  // getShops = () => {
+  //   api.getShops()
+  //   .then(res => {
+  //     this.setState({barbershops: res.data})
+  //   })
+  // }
 
   componentDidMount(){
-    this.getShops()
+    // this.getShops()
+    this.props.loadBarber()
   }
 
   render(){
@@ -81,4 +69,18 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+function mapStateToProps(state){
+  return {
+    barbershops : state.barbershops,
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    loadBarber : () => {
+      dispatch(barberFactory.load)
+    },
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Admin);
