@@ -3,9 +3,6 @@ import Barbershop from './Barbershop';
 import './App.css';
 import {api, server} from './API';
 
-
-
-
 class Landing extends Component {
   constructor(props){
     super(props);
@@ -20,8 +17,7 @@ class Landing extends Component {
     var form = new FormData(this.searchForm);
     var distance = require('google-distance-matrix');
     var origins = [form.get("origin-input")];
-    
-    
+
     for (let i= 0; i < this.state.barbershops.length; i++) {
       var destination = this.state.barbershops[i]
       var destinations = [destination.location];
@@ -37,7 +33,6 @@ class Landing extends Component {
       })
     }
   }
-  
 
   getShops = () => {
     api.getShops()
@@ -47,16 +42,10 @@ class Landing extends Component {
   }
 
   componentDidMount(){
-    
     this.getShops()
-  
-    
   }
   
   render(){
-
-    
-
     var {barbershops} = this.state;
     return (
       <div className="App">
