@@ -11,7 +11,7 @@ let barberFactory = {
     },
 
     load : () => {
-        var thunk = (dispatch) => {
+        let thunk = (dispatch) => {
             api.getShops()
             .then(res => {
                 let barbershops = res.data
@@ -32,13 +32,11 @@ let barberFactory = {
     },
     // remove : (id) => {
     //     let thunk = (dispatch) => {
-
     //         api.deleteTodos(id)
     //         .then(res => {
     //             dispatch(todosFactory.load())
     //         })
     //     }
-        
     //     return thunk
     // },
 
