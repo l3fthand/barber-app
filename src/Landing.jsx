@@ -11,8 +11,7 @@ class Landing extends Component {
       barbershops: []
     }
   }
- 
- 
+
   handleSearch = () =>{
     var form = new FormData(this.searchForm);
     var distance = require('google-distance-matrix');
