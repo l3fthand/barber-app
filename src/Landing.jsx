@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
+import Navigation from './Navigation';
 import './App.css';
 import {api, server} from './API';
 
@@ -50,10 +51,7 @@ class Landing extends Component {
       <div className="App">
         <div className="container">
 
-          <div className="nav">
-            <img src="" alt="logo"/>
-            <i className="far fa-user"></i>
-          </div>
+          <Navigation/>
 
           <div className="main">     
             <form ref={(el) => {this.searchForm = el}}>
