@@ -23,16 +23,17 @@ class Admin extends Component {
     })
   }
 
-  getShops = () => {
-    api.getShops()
-    .then(res => {
-      this.setState({barbershops: res.data})
-    })
-  }
+  // getShops = () => {
+  //   api.getShops()
+  //   .then(res => {
+  //     this.setState({barbershops: res.data})
+  //   })
+  // }
 
   componentDidMount(){
-    this.getShops()
-    // this.props.loadBarber()
+    // this.getShops()
+    this.props.loadBarber()
+    // this.setState({barbershops})
   }
 
   render(){

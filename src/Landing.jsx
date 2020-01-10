@@ -18,7 +18,7 @@ class Landing extends Component {
     var distance = require('google-distance-matrix');
     var origins = [form.get("origin-input")];
 
-    for (let i= 0; i < this.state.barbershops.length; i++) {
+    for (let i=0; i<this.state.barbershops.length; i++) {
       var destination = this.state.barbershops[i]
       var destinations = [destination.location];
     

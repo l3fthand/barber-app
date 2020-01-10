@@ -2,17 +2,29 @@ import {createStore,combineReducers,applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 
 import barberReducer from './barberReducer';
-// import barberFactory from './barberFactory';
+import barberFactory from './barberFactory';
 
-// const rootReducer = combineReducers({
-// 	barbershops : barberReducer,
-// 	//the reducer error is here as the admin factory is not yet defined
-// })
+let rootReducer = combineReducers({
+	barbershops : barberReducer,
+})
 
 let store = createStore(
-	barberReducer,
+	rootReducer,
 	applyMiddleware(thunk)
 )
+
+let barbershops = [
+	{
+		id: 1,
+		name: 'Malonleys'
+	},
+	{
+		id: 2,
+		name: 'Big Boss'
+	}
+]
+
+store.dispatch(barberFactory.set(barbershops))
 
 console.log(store.getState())
 
