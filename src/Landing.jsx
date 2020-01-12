@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Barbershop from './Barbershop';
 import './App.css';
 import {api, server} from './API';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faSearch} from '@fortawesome/fontawesome-free-solid';
 
 
 
@@ -64,13 +66,13 @@ class Landing extends Component {
 
           <div className="nav">
             <img src="" alt="logo"/>
-            <i className="far fa-user"></i>
           </div>
 
           <div className="main">     
             <form ref={(el) => {this.searchForm = el}}>
-              <div className="searchbar" onBlur={this.handleSearch}>
-                <input type="text" name="origin-input" placeholder="search..."></input>
+              <div className="searchbar">
+                <input  type="text" name="origin-input" placeholder="Enter your address..."></input>
+                <div className="searchButton" onClick={this.handleSearch}><FontAwesomeIcon icon={faSearch}/></div>
               </div>
             </form>
 

@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faUser, faUserClock} from '@fortawesome/fontawesome-free-solid';
 
 class Landing extends Component {
   constructor(props){
@@ -14,11 +16,11 @@ class Landing extends Component {
           <div className="info">
             <h3>{name}</h3>
             <div className="people">
-              <i className="far fa-user"></i>
+              <FontAwesomeIcon icon={faUser}/>
               <p>{cutting}</p>
             </div>
             <div className="people">
-              <i className="far fa-user"></i>
+            <FontAwesomeIcon icon={faUserClock}/>
               <p>{waiting}</p>
             </div>
             <div className="distance">
