@@ -1,18 +1,16 @@
 import React, {Component} from 'react';
+// import {api, server} from './API';
 import './App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser, faUserClock} from '@fortawesome/fontawesome-free-solid';
 
-class Landing extends Component {
-  constructor(props){
-    super(props);
-  }
+class Barbershop extends Component {
 
   render(){
     var {name, location, cutting, waiting, distance} = this.props;
     return (
         <div className="barbershop">
-          <img src="" alt="barbershop"/>
+          {/* <img src={server+photo} alt="barbershop"/> */}
           <div className="info">
             <h3>{name}</h3>
             <div className="people">
@@ -32,4 +30,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default Barbershop;

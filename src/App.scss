@@ -1,6 +1,6 @@
-*{
-    margin: 0;
-}
+// *{
+//     margin: 0;
+// }
 
 //header
 
@@ -15,15 +15,10 @@
     margin-top: 6em;
 }
 
-.nav{
-    padding: 1em 3em;
-    justify-content: space-between;
-    display: flex;
-    position: fixed;
-    top: 0;
-    background-color: black;
-    width: 100vw!important;
-    height: 3em;
+.customNav{
+    border-bottom: 1px grey solid;
+    background-color: white;
+    color: black;
 }
 
 .searchbar{
@@ -212,3 +207,25 @@ hr{
 }
 
 //adding to waiting list
+
+//admin barbershop adding
+
+.barbershopAdd{
+    width: 90%!important;
+    margin: 1.5em auto;
+}
+
+.form{
+    padding: 1em;
+    
+    h1{
+        text-align: center;
+        text-transform: uppercase;
+        padding-bottom: 1em;
+    }
+
+    Button{
+        display: flex;
+        margin: auto;
+    }
+}

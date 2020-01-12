@@ -1,7 +1,3 @@
-* {
-  margin: 0;
-}
-
 .container {
   height: 100vh;
   overflow: scroll;
@@ -13,19 +9,10 @@
   margin-top: 6em;
 }
 
-.nav {
-  padding: 1em 3em;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: fixed;
-  top: 0;
-  background-color: black;
-  width: 100vw !important;
-  height: 3em;
+.customNav {
+  border-bottom: 1px grey solid;
+  background-color: white;
+  color: black;
 }
 
 .searchbar {
@@ -230,5 +217,27 @@ hr {
   width: 100vw;
   padding: 1em;
   display: none;
+}
+
+.barbershopAdd {
+  width: 90% !important;
+  margin: 1.5em auto;
+}
+
+.form {
+  padding: 1em;
+}
+
+.form h1 {
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 1em;
+}
+
+.form Button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: auto;
 }
 /*# sourceMappingURL=App.css.map */

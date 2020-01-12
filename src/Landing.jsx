@@ -1,12 +1,10 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
+import Navigation from './Navigation';
 import './App.css';
 import {api, server} from './API';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/fontawesome-free-solid';
-
-
-
 
 class Landing extends Component {
   constructor(props){
@@ -16,15 +14,13 @@ class Landing extends Component {
       barbershops: []
     }
   }
- 
- 
+
   handleSearch = () =>{
     var form = new FormData(this.searchForm);
     var distance = require('google-distance-matrix');
     var origins = [form.get("origin-input")];
-    
-    
-    for (let i= 0; i < this.state.barbershops.length; i++) {
+
+    for (let i=0; i<this.state.barbershops.length; i++) {
       var destination = this.state.barbershops[i]
       var destinations = [destination.location];
     
@@ -39,7 +35,6 @@ class Landing extends Component {
       })
     }
   }
-  
 
   getShops = () => {
     api.getShops()
@@ -49,24 +44,16 @@ class Landing extends Component {
   }
 
   componentDidMount(){
-    
     this.getShops()
-  
-    
   }
   
   render(){
-
-    
-
     var {barbershops} = this.state;
     return (
       <div className="App">
         <div className="container">
 
-          <div className="nav">
-            <img src="" alt="logo"/>
-          </div>
+          <Navigation/>
 
           <div className="main">     
             <form ref={(el) => {this.searchForm = el}}>
