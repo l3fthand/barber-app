@@ -17,6 +17,7 @@ let barberFactory = {
                 let barbershops = res.data
                 dispatch(barberFactory.set(barbershops))
             })
+            
         }
         return thunk
     },
