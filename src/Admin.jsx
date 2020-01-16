@@ -12,7 +12,6 @@ class Admin extends Component {
     super(props);
     this.state = {
       barbershops: [],
-      // redirect: false,
     }
   }
 
@@ -23,22 +22,12 @@ class Admin extends Component {
     })
   }
 
-  // getShops = () => {
-  //   api.getShops()
-  //   .then(res => {
-  //     this.setState({barbershops: res.data})
-  //   })
-  // }
-
   componentDidMount(){
-    // this.getShops()
     this.props.loadBarber()
-    // this.setState({barbershops})
   }
 
   render(){
-    // var {barbershops,redirect} = this.props;
-    var {barbershops,redirect} = this.state;
+    var {barbershops,redirect} = this.props;
     return (
       <div className="App">
         <div className="container">
@@ -46,12 +35,7 @@ class Admin extends Component {
           <Navigation/>
 
           <div className="main">     
-            {/* <form>
-              <div className="searchbar">
-                <input type="text" name="search" placeholder="search..."></input>
-              </div>
-            </form> */}
-              <Button onClick={this.navigatePage.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
+            <Button onClick={this.navigatePage.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
 
             {
               barbershops.map((i) => {
@@ -80,7 +64,7 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return {
     loadBarber : () => {
-      dispatch(barberFactory.load)
+      dispatch(barberFactory.load())
     },
   }
 }

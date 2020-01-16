@@ -7,7 +7,7 @@ import {faUser, faUserClock} from '@fortawesome/fontawesome-free-solid';
 class Barbershop extends Component {
 
   render(){
-    var {name, location, cutting, waiting, distance} = this.props;
+    var {name, cutting, waiting, km} = this.props;
     return (
         <div className="barbershop">
           {/* <img src={server+photo} alt="barbershop"/> */}
@@ -22,7 +22,7 @@ class Barbershop extends Component {
               <p>{waiting}</p>
             </div>
             <div className="distance">
-              <p>{distance}</p>
+              <p>{km}</p>
             </div>
           </div>
         </div>

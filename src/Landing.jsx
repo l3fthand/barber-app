@@ -5,13 +5,16 @@ import './App.css';
 import {api, server} from './API';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/fontawesome-free-solid';
+import {connect} from 'react-redux';
+import barberFactory from './redux/barberFactory';
 
 class Landing extends Component {
   constructor(props){
     super(props);
     this.state = {
       startingPoint: '',
-      barbershops: []
+      filtered: [],
+      display: null,
     }
   }
 
@@ -19,36 +22,36 @@ class Landing extends Component {
     var form = new FormData(this.searchForm);
     var distance = require('google-distance-matrix');
     var origins = [form.get("origin-input")];
+    let barbershops = [...this.props.barbershops]
 
-    for (let i=0; i<this.state.barbershops.length; i++) {
-      var destination = this.state.barbershops[i]
+    for (let i=0; i<this.props.barbershops.length; i++) {
+      var destination = this.props.barbershops[i]
       var destinations = [destination.location];
     
       distance.key('AIzaSyDknEtmtQzCjjFGOAJiHVFKcBegAsUBUKc')
       distance.matrix(origins, destinations, (err, distances)=>{
         if (!err){
-            let km = distances.rows[0].elements[0].distance.text
-            var barbershops = [...this.state.barbershops]
-            barbershops[i] = {...barbershops[i], distance:km}
-            this.setState({barbershops})
+            let km = (distances.rows[0].elements[0].distance.value)
+            console.log(km)
+            barbershops[i] = {...barbershops[i], distance:km,km:distances.rows[0].elements[0].distance.text}
           }
+          var filtered = barbershops.filter((el)=>{
+            return el.distance < 5000
+          })
+          this.setState({filtered})
       })
     }
+    this.setState({display:"on"})
   }
-
-  getShops = () => {
-    api.getShops()
-    .then(res => {
-      this.setState({barbershops: res.data})
-    })
-  }
-
+  
   componentDidMount(){
-    this.getShops()
+    this.props.loadBarber()
+    
   }
   
   render(){
-    var {barbershops} = this.state;
+    
+    var {filtered} = this.state;
     return (
       <div className="App">
         <div className="container">
@@ -63,14 +66,18 @@ class Landing extends Component {
               </div>
             </form>
 
-            {
-              barbershops.map((i) => {
+            { this.state.display != null  ? 
+                
+              filtered.map((i) => {
                 var props = {
-                  ...i,
+                  ...i, 
                   key: i.id,
                 }
                 return <Barbershop {...props}/>
-              })
+                
+              }) 
+             :
+             null
             }
 
           </div>
@@ -80,6 +87,19 @@ class Landing extends Component {
     );
   }
 }
+function mapStateToProps(state){
+  return {
+    barbershops : state.barbershops,
+  }
+}
 
-export default Landing;
+function mapDispatchToProps(dispatch){
+  return {
+    loadBarber : () => {
+      dispatch(barberFactory.load())
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (Landing);
 
