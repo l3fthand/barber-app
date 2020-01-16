@@ -9,6 +9,10 @@ const api = {
     return axios.get(url+'/shops')
   },
 
+  getShop : (id) => {
+    return axios.get(url+'/shops'+id)
+  },
+
   addShop : (data) => {
     return axios.post(url+'/shops',data)
   },

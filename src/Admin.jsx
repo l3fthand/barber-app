@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
-import Navigation from './Navigation';
 import './App.css';
 import {api, server} from './API';
 import Button from 'react-bootstrap/Button';
@@ -11,14 +10,20 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      barbershops: [],
+      user: 'admin'
     }
   }
 
-  navigatePage(){
-    let {history} = this.props;
-    history.push({
+  AddBarberNavigate(){
+    this.props.history.push({
       pathname: '/addbarber',
+    })
+  }
+
+  EditBarberNavigate(){
+    this.props.history.push({
+      // pathname: '/editbarber/:id',
+      pathname: '/editbarber',
     })
   }
 
@@ -27,29 +32,22 @@ class Admin extends Component {
   }
 
   render(){
-    var {barbershops,redirect} = this.props;
+    let {barbershops} = this.props;
+    let {user} = this.state;
     return (
-      <div className="App">
-        <div className="container">
-
-          <Navigation/>
-
-          <div className="main">     
-            <Button onClick={this.navigatePage.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
-
-            {
-              barbershops.map((i) => {
-                var props = {
-                  ...i,
-                  key: i.id,
-                }
-                return <Barbershop {...props}/>
-              })
-            }
-
-          </div>
-
-        </div>
+      <div className="main">     
+        <Button onClick={this.AddBarberNavigate.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
+          {
+            barbershops.map((i) => {
+              let props = {
+                ...i,
+                key: i.id,
+                user,
+                // EditBarberNavigate: this.props.EditBarberNavigate,
+              }
+            return <Barbershop {...props}/>
+            })
+          }
       </div>
     );
   }

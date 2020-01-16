@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
-import Navigation from './Navigation';
 import './App.css';
 import {api, server} from './API';
 
@@ -9,7 +8,8 @@ class Landing extends Component {
     super(props);
     this.state = {
       startingPoint: '',
-      barbershops: []
+      barbershops: [],
+      user: null,
     }
   }
 
@@ -46,13 +46,11 @@ class Landing extends Component {
   }
   
   render(){
-    var {barbershops} = this.state;
+    var {barbershops, user} = this.state;
     return (
       <div className="App">
         <div className="container">
-
-          <Navigation/>
-
+          
           <div className="main">     
             <form ref={(el) => {this.searchForm = el}}>
               <div className="searchbar" onBlur={this.handleSearch}>
@@ -65,6 +63,7 @@ class Landing extends Component {
                 var props = {
                   ...i,
                   key: i.id,
+                  user,
                 }
                 return <Barbershop {...props}/>
               })

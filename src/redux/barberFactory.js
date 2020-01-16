@@ -22,6 +22,16 @@ let barberFactory = {
         return thunk
     },
 
+    loadID : (id, data) => {
+        let thunk = (dispatch) => {
+            api.getShop(id)
+            .then(res => {
+                dispatch(barberFactory.load(id))
+            })
+        }
+        return thunk
+    },
+
     add : (data) => {
         let thunk = (dispatch) => {
             api.addShop(data)

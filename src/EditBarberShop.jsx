@@ -5,9 +5,8 @@ import Button from 'react-bootstrap/Button';
 import {api, server} from './API';
 import {connect} from 'react-redux';
 import barberFactory from './redux/barberFactory';
-import {Redirect} from 'react-router-dom';
 
-class AddBarberShop extends Component {
+class EditBarberShop extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -25,8 +24,10 @@ class AddBarberShop extends Component {
       password: form.get('password-input'),
       pin: form.get('pin-input'),
     }
+
     this.props.addBarber(data)
-    this.props.history.push({
+    let {history} = this.props;
+    history.push({
       pathname: '/admin',
     })
   }
@@ -34,8 +35,9 @@ class AddBarberShop extends Component {
   render(){
     return (
       <div className="main">
-          <div className="form">
-            <h1>Add Barbershop</h1>
+        <div className="form">
+          <h1>Edit Barbershop</h1>
+
             <Form className="barberForm" onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
 
               <Form.Group>
@@ -62,10 +64,11 @@ class AddBarberShop extends Component {
                 <Form.Control type="text" className="form-control" name="pin-input" id="pin-input"placeholder="Enter Your Pin Number" minLength="4" maxLength="4"/>
               </Form.Group>
 
-              <Button variant="danger" type="submit">Add Barber</Button>
+              <Button variant="danger" type="submit">Save</Button>
             </Form>
-          </div>
-        </div>     
+
+        </div>
+      </div>
     );
   }
 }
@@ -84,4 +87,4 @@ function mapDispatchToProps(dispatch){
 	}
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(AddBarberShop);
+export default connect(mapStateToProps,mapDispatchToProps)(EditBarberShop);
