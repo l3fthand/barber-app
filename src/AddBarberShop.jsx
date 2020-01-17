@@ -24,6 +24,7 @@ class AddBarberShop extends Component {
 			username: form.get('username-input'),
       password: form.get('password-input'),
       pin: form.get('pin-input'),
+      distance: 0,
     }
     this.props.addBarber(data)
     this.props.history.push({

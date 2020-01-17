@@ -16,7 +16,10 @@
 }
 
 .searchbar {
-  margin: 3em;
+  margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .searchbar input {
@@ -28,6 +31,22 @@
   margin: 0.5em auto;
   width: 90%;
   font-size: 0.9em;
+  background-color: #EAEAEA;
+  border: none;
+  border-radius: 0.35em 0 0 0.35em;
+  text-align: center;
+}
+
+.searchbar .searchButton {
+  padding: 0.7em;
+  margin: 0.5em auto;
+  font-size: 0.9em;
+  border-radius: 0 0.35em 0.35em 0;
+  background-color: #A9314E;
+}
+
+.searchbar .fa-search {
+  color: white;
 }
 
 .barbershop {
@@ -74,6 +93,10 @@
 
 .info .people p {
   padding-left: 0.2em;
+}
+
+.info .people .fa-user, .info .people .fa-user-clock {
+  color: #A9314E;
 }
 
 .info .distance p {
