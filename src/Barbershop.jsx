@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-// import {api, server} from './API';
+import {api, server} from './API';
 import './App.css';
 import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
@@ -11,9 +11,11 @@ class Barbershop extends Component {
     super(props);
   }
 
-  // componentDidMount(){
-  //   this.props.loadID()
-  // }
+  getShop
+
+  componentDidMount(){
+    
+  }
 
   render(){
     var {name, location, cutting, waiting, distance, user, id} = this.props;
@@ -36,7 +38,7 @@ class Barbershop extends Component {
             {
               // <Button onClick={this.EditBarberNavigate(id)} variant="danger" className="barbershopEdit" variant="danger" size="md">Edit Barber</Button>
               user != null ?
-              <Button variant="danger" className="barbershopEdit"><Link to='/editbarber/'>Edit Barber</Link></Button> 
+              <Link to={'/editbarber/'+id}><Button variant="danger" className="barbershopEdit">Edit Barber</Button></Link>
               : null
             }
             
