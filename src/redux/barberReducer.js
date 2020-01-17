@@ -12,6 +12,4 @@ function barberReducer(state = initialState,action){
     }
 }
 
-console.log(initialState)
-
 export default barberReducer;

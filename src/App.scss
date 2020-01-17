@@ -66,8 +66,9 @@
 .info{
     display: flex;
     flex-direction: column;
-    flex: 0 0 60%;
+    flex: 1 0 60%;
     padding: 0.3em;
+    position: relative;
 
     h3{
         font-size: 1em;
@@ -95,6 +96,13 @@
             text-align: right;
             padding: 0.4em;
         }
+    }
+
+    .barbershopEdit{
+        position: absolute;
+        right: 0;
+        top: 0;
+        margin: 0.5em;
     }
 }
 

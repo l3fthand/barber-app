@@ -73,10 +73,11 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 60%;
-          flex: 0 0 60%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 60%;
+          flex: 1 0 60%;
   padding: 0.3em;
+  position: relative;
 }
 
 .info h3 {
@@ -101,6 +102,13 @@
 .info .distance p {
   text-align: right;
   padding: 0.4em;
+}
+
+.info .barbershopEdit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0.5em;
 }
 
 .popup {

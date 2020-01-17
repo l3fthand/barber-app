@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
-import Navigation from './Navigation';
 import './App.css';
 import {api, server} from './API';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
@@ -15,6 +14,7 @@ class Landing extends Component {
       startingPoint: '',
       filtered: [],
       display: null,
+      user: null,
     }
   }
 
@@ -51,13 +51,11 @@ class Landing extends Component {
   
   render(){
     
-    var {filtered} = this.state;
+    var {filtered, user} = this.state;
     return (
       <div className="App">
         <div className="container">
-
-          <Navigation/>
-
+          
           <div className="main">     
             <form ref={(el) => {this.searchForm = el}}>
               <div className="searchbar">
@@ -72,6 +70,7 @@ class Landing extends Component {
                 var props = {
                   ...i, 
                   key: i.id,
+                  user,
                 }
                 return <Barbershop {...props}/>
                 
