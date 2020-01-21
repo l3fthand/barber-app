@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
 import './App.css';
-import {api, server} from './API';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faSearch} from '@fortawesome/fontawesome-free-solid';
 import {connect} from 'react-redux';
@@ -46,7 +45,6 @@ class Landing extends Component {
   
   componentDidMount(){
     this.props.loadBarber()
-    
   }
   
   render(){

@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {api, server} from './API';
+import {api} from './API';
 import {connect} from 'react-redux';
 import barberFactory from './redux/barberFactory';
-import {Redirect} from 'react-router-dom';
 
 class AddBarberShop extends Component {
   constructor(props){
@@ -17,18 +16,22 @@ class AddBarberShop extends Component {
 
   submitForm = (e) => {
 		e.preventDefault();
-		let form = new FormData(this.form);
-    let data = {
-			name: form.get('name-input'),
-			location: form.get('address-input'),
-			username: form.get('username-input'),
-      password: form.get('password-input'),
-      pin: form.get('pin-input'),
-      distance: 0,
-    }
-    this.props.addBarber(data)
-    this.props.history.push({
-      pathname: '/admin',
+    let form = new FormData(this.form);
+    api.uploadPhoto(form).then(res => {
+      let file = res.data;
+      let data = {
+        name: form.get('name-input'),
+        location: form.get('address-input'),
+        photo: file,
+        username: form.get('username-input'),
+        password: form.get('password-input'),
+        pin: form.get('pin-input'),
+        distance: 0,
+      }
+      this.props.addBarber(data)
+      this.props.history.push({
+        pathname: '/admin',
+      })
     })
   }
 

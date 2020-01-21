@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {api, server} from './API';
+import {server} from './API';
 import './App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser, faUserClock} from '@fortawesome/fontawesome-free-solid';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux';
 import barberFactory from './redux/barberFactory';
 import {Link} from 'react-router-dom';
@@ -13,17 +14,11 @@ class Barbershop extends Component {
     super(props);
   }
 
-  getShop
-
-  componentDidMount(){
-    
-  }
-
   render(){
-    var {name, cutting, waiting, distance, user, id,km} = this.props;
+    var {name, cutting, waiting, distance, user, id, km, photo} = this.props;
     return (
         <div className="barbershop">
-          <img src="img" alt="barbershop"/>
+          <Card.Img src={server+photo} alt="barbershop" style={{width: '30%'}}/>
           <div className="info">
             <h3>{name}</h3>
             <div className="people">
@@ -31,19 +26,17 @@ class Barbershop extends Component {
               <p>{cutting}</p>
             </div>
             <div className="people">
-            <FontAwesomeIcon icon={faUserClock}/>
+              <FontAwesomeIcon icon={faUserClock}/>
               <p>{waiting}</p>
             </div>
             <div className="distance">
               <p>{km}</p>
             </div>
             {
-              // <Button onClick={this.EditBarberNavigate(id)} variant="danger" className="barbershopEdit" variant="danger" size="md">Edit Barber</Button>
               user != null ?
-              <Link to={'/editbarber/'+id}><Button variant="danger" className="barbershopEdit">Edit Barber</Button></Link>
+              <Link to={`/editbarber/${this.props.id}`}><Button variant="danger" className="barbershopEdit">Edit Barber</Button></Link>
               : null
             }
-            
           </div>
         </div>
     );

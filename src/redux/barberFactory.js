@@ -31,15 +31,16 @@ let barberFactory = {
         }
         return thunk
     },
-    // remove : (id) => {
-    //     let thunk = (dispatch) => {
-    //         api.deleteTodos(id)
-    //         .then(res => {
-    //             dispatch(todosFactory.load())
-    //         })
-    //     }
-    //     return thunk
-    // },
+
+    remove : (id) => {
+        let thunk = (dispatch) => {
+            api.deleteShop(id)
+            .then(res => {
+                dispatch(barberFactory.load())
+            })
+        }
+        return thunk
+    },
 
 }
 

@@ -5,7 +5,7 @@ import Admin from './Admin';
 import AddBarberShop from './AddBarberShop';
 import EditBarberShop from './EditBarberShop';
 import './App.css';
-import {BrowserRouter,Route,Switch,Redirect} from 'react-router-dom';
+import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {

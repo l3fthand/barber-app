@@ -56,6 +56,8 @@
     background-color: #eee;
     margin: 0.8em 0;
     border-radius: 0.3em;
+    height: 9em;
+    max-height: 9em;
 
     .img{
         background-color: #ddd;
@@ -237,3 +239,30 @@ hr{
         margin: auto;
     }
 }
+
+//admin barbershop edit
+
+.barberForm{
+
+    .buttons{
+        display: flex;
+
+        .deleteButton{
+            background-color: white;
+            color: black;
+        }
+
+        .deleteButton:hover{
+            background-color: #dc3545!important;
+            color: white;
+        }
+    }
+
+    Button{
+        margin: 3em auto;
+        padding: 0.5em 2em;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+

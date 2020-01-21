@@ -10,17 +10,28 @@ const api = {
   },
 
   getShop : (id) => {
-    return axios.get(url+'/shops'+id)
+    return axios.get(url+'/shops/'+id)
   },
 
   addShop : (data) => {
     return axios.post(url+'/shops',data)
   },
 
-  // uploadPhoto : (data) => {
-  //   return axios.post(url+'/upload',data)
-  // },
+  deleteShop : (id) => {
+    return axios.delete(url+'/shops/'+id)
+  },
 
+  updateShop : (id,data) => {
+    return axios.put(url+'/shops/'+id,data)
+  },
+
+  uploadPhoto : (data) => {
+    return axios.post(url+'/upload',data)
+  },
+
+  // getAdmin : (data) => {
+  //   return axios.get(url+'/admin',data)
+  // },
 }
 
 export default api

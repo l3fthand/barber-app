@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Barbershop from './Barbershop';
 import './App.css';
-import {api, server} from './API';
 import Button from 'react-bootstrap/Button';
 import {connect} from 'react-redux';
 import barberFactory from './redux/barberFactory';
@@ -20,15 +19,8 @@ class Admin extends Component {
     })
   }
 
-  EditBarberNavigate(){
-    this.props.history.push({
-      // pathname: '/editbarber/:id',
-      pathname: '/editbarber',
-    })
-  }
-
   componentDidMount(){
-    this.props.loadBarber()
+    this.props.loadBarber();
   }
 
   render(){
@@ -43,7 +35,6 @@ class Admin extends Component {
                 ...i,
                 key: i.id,
                 user,
-                // EditBarberNavigate: this.props.EditBarberNavigate,
               }
             return <Barbershop {...props}/>
             })

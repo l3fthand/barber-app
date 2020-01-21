@@ -56,6 +56,8 @@
   background-color: #eee;
   margin: 0.8em 0;
   border-radius: 0.3em;
+  height: 9em;
+  max-height: 9em;
 }
 
 .barbershop .img {
@@ -247,5 +249,33 @@ hr {
   display: -ms-flexbox;
   display: flex;
   margin: auto;
+}
+
+.barberForm .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.barberForm .buttons .deleteButton {
+  background-color: white;
+  color: black;
+}
+
+.barberForm .buttons .deleteButton:hover {
+  background-color: #dc3545 !important;
+  color: white;
+}
+
+.barberForm Button {
+  margin: 3em auto;
+  padding: 0.5em 2em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 /*# sourceMappingURL=App.css.map */
