@@ -9,7 +9,7 @@ class Admin extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user: 'admin'
+      user: 'admin',
     }
   }
 
@@ -27,7 +27,7 @@ class Admin extends Component {
     let {barbershops} = this.props;
     let {user} = this.state;
     return (
-      <div className="main">     
+      <div className="main">
         <Button onClick={this.AddBarberNavigate.bind(this)} className="barbershopAdd" variant="danger" size="lg" block>Add New Barber</Button>
           {
             barbershops.map((i) => {

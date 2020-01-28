@@ -15,6 +15,11 @@
   color: black;
 }
 
+Button {
+  background-color: #A9314E !important;
+  border-color: #A9314E !important;
+}
+
 .searchbar {
   margin: 1em;
   display: -webkit-box;
@@ -216,7 +221,7 @@ hr {
 
 .date .days {
   width: 60%;
-  color: maroon;
+  color: #A9314E;
   font-weight: bold;
 }
 
@@ -258,12 +263,12 @@ hr {
 }
 
 .barberForm .buttons .deleteButton {
-  background-color: white;
+  background-color: white !important;
   color: black;
 }
 
 .barberForm .buttons .deleteButton:hover {
-  background-color: #dc3545 !important;
+  background-color: #A9314E !important;
   color: white;
 }
 
@@ -277,5 +282,84 @@ hr {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+}
+
+.barberImage {
+  position: relative;
+}
+
+.barberImage .image {
+  width: 100%;
+  max-height: 15em;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.img-fluid {
+  width: 80%;
+  margin: 1.5em auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.upload-btn-wrapper {
+  position: relative;
+}
+
+.upload-btn-wrapper input[type=file] {
+  margin: 0 auto 2.5em;
+}
+
+.upload-btn-wrapper Button {
+  position: absolute;
+  right: 0;
+}
+
+.deleteModal {
+  height: 40vh;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  outline: none;
+  background-color: white;
+  position: absolute;
+  -webkit-box-shadow: 0.1em 0.1em 0.5em #ccc;
+          box-shadow: 0.1em 0.1em 0.5em #ccc;
+}
+
+.deleteModal h4 {
+  text-align: center;
+  padding: 2.5em 0;
+  font-size: 1.3em;
+}
+
+.deleteModal .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1.5em;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.deleteModal .buttons Button {
+  padding: 0.5em 1.8em;
+}
+
+.deleteModal .buttons .deleteButton {
+  background-color: white !important;
+  color: black;
+}
+
+.deleteModal .buttons .deleteButton:hover {
+  background-color: #A9314E !important;
+  color: white;
 }
 /*# sourceMappingURL=App.css.map */

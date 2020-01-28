@@ -1,6 +1,4 @@
-// *{
-//     margin: 0;
-// }
+$maincolor: #A9314E;
 
 //header
 
@@ -20,6 +18,13 @@
     background-color: white;
     color: black;
 }
+
+Button{
+    background-color: $maincolor!important;
+    border-color: $maincolor!important;
+}
+
+//landing search
 
 .searchbar{
     margin: 1em;
@@ -85,14 +90,12 @@
         }
 
         .fa-user, .fa-user-clock{
-            color: #A9314E
-            
+            color: $maincolor;
         }
 
     }
 
     .distance{
-        // width: 80%;
 
         p{
             text-align: right;
@@ -144,13 +147,11 @@
 
 .customers{
     display: flex;
-    // border: 1px red solid;
     justify-content: space-evenly;
     margin: 1em;
 
     div{
         flex-direction: row;
-        // border: 1px blue solid;
 
         .people{
             display: flex;
@@ -200,7 +201,7 @@ hr{
 
     .days{
         width: 60%;
-        color: maroon;
+        color: $maincolor;
         font-weight: bold;
     }
 }
@@ -248,12 +249,12 @@ hr{
         display: flex;
 
         .deleteButton{
-            background-color: white;
+            background-color: white!important;
             color: black;
         }
 
         .deleteButton:hover{
-            background-color: #dc3545!important;
+            background-color: $maincolor!important;
             color: white;
         }
     }
@@ -266,3 +267,83 @@ hr{
     }
 }
 
+.barberImage{
+    position: relative;
+
+    .image{
+        width: 100%;
+        max-height: 15em;
+        object-fit: contain;
+    }
+}
+
+.img-fluid{
+    width: 80%;
+    margin: 1.5em auto;
+    display: flex;
+}
+
+.upload-btn-wrapper{
+    position: relative;
+    // top: 50%;
+    // transform: translateY(-50%);
+    // margin-left: auto;
+    // margin-right: auto;
+    // left: 0;
+    // right: 0;
+  
+    input[type=file]{
+        // font-size: 100px;
+        // position: absolute;
+        // left: 0;
+        // top: 0;
+        margin: 0 auto 2.5em;
+        // opacity: 0;
+    }
+
+    Button{
+        position: absolute;
+        right: 0;
+    }
+}
+
+.deleteModal{
+    height: 40vh;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0.1em 0.1em 0.5em #ccc;
+
+    h4{
+        text-align: center;
+        padding: 2.5em 0;
+        font-size: 1.3em;
+    }
+
+    .buttons{
+        display: flex;
+        margin: 1.5em;
+        justify-content: space-evenly;
+
+        Button{
+            padding: 0.5em 1.8em;
+        }
+
+        .deleteButton{
+            background-color: white!important;
+            color: black;
+        }
+
+        .deleteButton:hover{
+            background-color: $maincolor!important;
+            color: white;
+        }
+    }
+}
