@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import Admin from './Admin';
 import AddBarberShop from './AddBarberShop';
 import EditBarberShop from './EditBarberShop';
+import CustomerAdd from './CustomerAdd';
 import './App.css';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path='/admin' component={Admin}/>
             <Route path='/addbarber' component={AddBarberShop}/>
             <Route path='/editbarber/:id' component={EditBarberShop}/>
+            <Route path='/customeradd' component={CustomerAdd}/>
           </Switch>
         </BrowserRouter>
 

@@ -70,6 +70,8 @@ Button {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 40%;
           flex: 1 0 40%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .info {
@@ -361,5 +363,46 @@ hr {
 .deleteModal .buttons .deleteButton:hover {
   background-color: #A9314E !important;
   color: white;
+}
+
+.addCustomer {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  margin: auto;
+}
+
+.addCustomer Button {
+  margin-left: auto;
+  margin-right: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0.4em 2em;
+}
+
+.barberCustomers {
+  margin-top: 20vh;
+  padding: 1em;
+  border: 1px red solid;
+}
+
+.barberCustomers hr {
+  width: 100%;
+}
+
+.barberCustomers h3 {
+  font-size: 1.2em;
+  padding-bottom: 0.5em;
+}
+
+.currentCustomers .customer {
+  text-align: center;
+}
+
+.currentCustomers svg {
+  color: #A9314E;
+  font-size: 1.3em;
 }
 /*# sourceMappingURL=App.css.map */
