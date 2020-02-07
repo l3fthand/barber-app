@@ -366,16 +366,12 @@ hr {
 }
 
 .addCustomer {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: 80%;
   margin: auto;
 }
 
 .addCustomer Button {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -383,9 +379,8 @@ hr {
 }
 
 .barberCustomers {
-  margin-top: 20vh;
-  padding: 1em;
-  border: 1px red solid;
+  margin-top: 10vh;
+  padding: 1em 2em;
 }
 
 .barberCustomers hr {
@@ -399,6 +394,8 @@ hr {
 
 .currentCustomers .customer {
   text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
 }
 
 .currentCustomers svg {

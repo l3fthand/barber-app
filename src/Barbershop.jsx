@@ -7,6 +7,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import {connect} from 'react-redux';
 import barberFactory from './redux/barberFactory';
+import waitingFactory from './redux/waitingFactory';
+import cuttingFactory from './redux/cuttingFactory';
 import {Link} from 'react-router-dom';
 
 class Barbershop extends Component {
@@ -14,8 +16,16 @@ class Barbershop extends Component {
     super(props);
   }
 
+  componentDidMount(){
+    this.props.loadWaiting();
+    this.props.loadCutting();
+  }
+
   render(){
-    var {name, cutting, waiting, distance, user, id, km, photo} = this.props;
+    // cutting, waiting,
+    let {name, user, km, photo} = this.props;
+    let waiting = this.props.waiting.length;
+    let cutting = this.props.cutting.length;
     return (
         <div className="barbershop">
           <Card.Img src={server+photo} alt="barbershop" style={{width: '30%'}}/>
@@ -45,15 +55,23 @@ class Barbershop extends Component {
 
 function mapStateToProps(state){
 	return {
-		barbershops: state.barbershops
+    barbershops: state.barbershops,
+    waiting : state.waiting,
+    cutting : state.cutting,
 	}
 }
 
 function mapDispatchToProps(dispatch){
 	return {
 		getBarber : (barbershop) => {
-			dispatch(barberFactory.loadID(barbershop))
-		}
+			dispatch(barberFactory.load(barbershop))
+    },
+    loadWaiting : () => {
+      dispatch(waitingFactory.load())
+    },
+    loadCutting : () => {
+      dispatch(cuttingFactory.load())
+    },
 	}
 }
 

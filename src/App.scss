@@ -341,22 +341,19 @@ hr{
 //customer adding
 
 .addCustomer{
-    justify-content: center;
     width: 80%;
     margin: auto;
 
     Button{
-        margin-left: auto;
-        margin-right: auto;
+        margin: auto;
         display: flex;
         padding: 0.4em 2em;
     }
 }
 
 .barberCustomers{
-    margin-top: 20vh;
-    padding: 1em;
-    border: 1px red solid;
+    margin-top: 10vh;
+    padding: 1em 2em;
 
     hr{
         width: 100%;
@@ -372,6 +369,8 @@ hr{
 
     .customer{
         text-align: center;
+        text-transform: capitalize;
+        cursor: pointer;
     }
 
     svg{

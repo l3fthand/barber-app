@@ -29,6 +29,30 @@ const api = {
     return axios.post(url+'/upload',data)
   },
 
+  getWaiting : () => {
+    return axios.get(url+'/waiting')
+  },
+
+  addWaiting : (data) => {
+    return axios.post(url+'/waiting',data)
+  },
+
+  deleteWaiting : (id) => {
+    return axios.delete(url+'/waiting/'+id)
+  },
+
+  getCutting : () => {
+    return axios.get(url+'/cutting')
+  },
+
+  addCutting : (data) => {
+    return axios.post(url+'/cutting',data)
+  },
+
+  deleteCutting : (id) => {
+    return axios.delete(url+'/cutting/'+id)
+  }
+
   // getAdmin : (data) => {
   //   return axios.get(url+'/admin',data)
   // },

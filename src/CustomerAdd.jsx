@@ -3,69 +3,76 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import {api, server} from './API';
+import Form from 'react-bootstrap/Form';
+import ReactModal from 'react-modal';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faUser, faUserClock} from '@fortawesome/fontawesome-free-solid';
 import {connect} from 'react-redux';
-import barberFactory from './redux/barberFactory';
-import Form from 'react-bootstrap/Form';
+import waitingFactory from './redux/waitingFactory';
+import cuttingFactory from './redux/cuttingFactory';
 
 class CustomerAdd extends Component {
   constructor(props){
     super(props);
     this.state = {
-      waiting: [
-        {
-          id: 1,
-          name: 'David',
-        },
-        {
-          id: 2,
-          name: 'John',
-        },
-        {
-          id: 3,
-          name: 'Mike',
-        },
-        {
-          id: 4,
-          name: 'Geoff',
-        },
-        {
-          id: 5,
-          name: 'Liam',
-        }
-      ],
-      cutting: [
-        {
-          id: 1,
-          name: 'Harry',
-        },
-        {
-          id: 2,
-          name: 'Tom',
-        },
-      ],
+      cuttingModelIsOpen: false,
+      finishedModelIsOpen: false,
+      name: '',
+      id: '',
     }
   }
 
-  // addCustomer = () => {
+  addCustomer = (e) => {
+    e.preventDefault()
+    let formData = new FormData(this.form);
+    let data = {
+      name: formData.get('name-input'),
+    }
+    this.props.addWaiting(data);
+    e.target.reset();
+  }
 
-  // }
+  updateCustomer = (id,name) => {
+    id = this.state.id;
+    name = this.state.name;
+    this.props.deleteWaiting(id)
+    let data = {name}
+    this.props.addCutting(data)
+    this.closeCuttingModal()
+  }
 
-  // updateCustomer = () => {
+  removeCustomer = (id) => {
+    id = this.state.id;
+    this.props.deleteCutting(id)
+    this.closeFinishedModal()
+  }
 
-  // }
+  openCuttingModal = (id,name) => {
+    this.setState({cuttingModelIsOpen: true, name, id})
+  }
 
-  // removeCustomer = () => {
+  openFinishedModal = (id) => {
+    this.setState({finishedModelIsOpen: true, id})
+  }
 
-  // }
+  closeCuttingModal = () => {
+    this.setState({cuttingModelIsOpen: false})
+  }
+
+  closeFinishedModal = () => {
+    this.setState({finishedModelIsOpen: false})
+  }
+
+  componentDidMount(){
+    this.props.loadWaiting()
+    this.props.loadCutting()
+  }
 
   render(){
-    let {waiting, cutting} = this.state;
+    let {waiting, cutting} = this.props;
     return (
       <div className="main">
-        <Form className="addCustomer" onSubmit={this.addCustomer} ref={(el) => {this.photo = el}}>
+        <Form className="addCustomer" onSubmit={this.addCustomer} ref={(el) => {this.form = el}}>
           <Form.Group>
             <Form.Control type="text" className="form-control" name="name-input" id="name-input" placeholder="Name"/>
           </Form.Group>
@@ -81,7 +88,7 @@ class CustomerAdd extends Component {
                 let {id, name} = waiting;
                   return(
                     <Col key={id}>
-                      <div className="customer">
+                      <div className="customer" onClick={this.openCuttingModal.bind(this,id,name)}>
                         <FontAwesomeIcon icon={faUserClock}/>
                         <p>{name}</p>
                       </div>
@@ -98,7 +105,7 @@ class CustomerAdd extends Component {
                 let {id, name} = cutting;
                   return(
                     <Col key={id}>
-                      <div className="customer">
+                      <div className="customer" onClick={this.openFinishedModal.bind(this,id)}>
                         <FontAwesomeIcon icon={faUser}/>
                         <p>{name}</p>
                       </div>
@@ -108,6 +115,22 @@ class CustomerAdd extends Component {
             </Row>
           </div>
         </div>
+
+        <ReactModal isOpen={this.state.cuttingModelIsOpen} ariaHideApp={false} className="deleteModal">
+          <h4>Is it {this.state.name}'s turn to cut?</h4>
+          <div className="buttons">
+            <Button onClick={this.updateCustomer} variant="danger" type="submit">Yes</Button>
+            <Button onClick={this.closeCuttingModal} className="deleteButton" variant="danger">No</Button>
+          </div>
+        </ReactModal>
+
+        <ReactModal isOpen={this.state.finishedModelIsOpen} ariaHideApp={false} className="deleteModal">
+          <h4>Finished?</h4>
+          <div className="buttons">
+            <Button onClick={this.removeCustomer} variant="danger" type="submit">Yes</Button>
+            <Button onClick={this.closeFinishedModal} className="deleteButton" variant="danger">No</Button>
+          </div>
+        </ReactModal>
         
       </div>
     );
@@ -116,15 +139,31 @@ class CustomerAdd extends Component {
 
 function mapStateToProps(state){
   return {
-    barbershops : state.barbershops,
+    waiting : state.waiting,
+    cutting : state.cutting,
   }
 }
 
 function mapDispatchToProps(dispatch){
   return {
-    loadBarber : () => {
-      dispatch(barberFactory.load())
+    loadWaiting : () => {
+      dispatch(waitingFactory.load())
     },
+    addWaiting : (waiting) => {
+			dispatch(waitingFactory.add(waiting))
+    },
+    deleteWaiting : (waiting) => {
+      dispatch(waitingFactory.remove(waiting))
+    },
+    loadCutting : () => {
+      dispatch(cuttingFactory.load())
+    },
+    addCutting : (cutting) => {
+			dispatch(cuttingFactory.add(cutting))
+    },
+    deleteCutting : (cutting) => {
+      dispatch(cuttingFactory.remove(cutting))
+    }
   }
 }
 
